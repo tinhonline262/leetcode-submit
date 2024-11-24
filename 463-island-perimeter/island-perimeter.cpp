@@ -1,47 +1,26 @@
 class Solution {
 public:
-    int DFS(int i, int j, vector<vector<int>>& grid)
+    void DFS(int i, int j, vector<vector<int>>& grid, int& res)
     {
-        // if (i < 0 || i >= grid.size() || j < 0 || j >= grid[0].size() || grid[i][j] == 0) return 0;
-        // int res = 4;
-        // if (grid[i - 1][j])
-        // {
-        //     res--;
-        //     grid[i - 1][j] = 0;
-        // }
-        // if (grid[i][j - 1]){
-        //     res--;
-        //     grid[i][j - 1] = 0;
-        // }
-        // if (grid[i + 1][j]){
-        //     res--;
-        //     grid[i + 1][j] = 0;
-        // }
-        // if (grid[i][j + 1]){
-        //     res--;
-        //     grid[i][j + 1] = 0;
-        // }
-        // res += DFS(i - 1, j, grid);
-        // res += DFS(i, j - 1, grid);
-        // res += DFS(i + 1, j, grid);
-        // res += DFS(i, j + 1, grid);
-        // return res;
-         if (i < 0 || i >= grid.size() || j < 0 || j >= grid[0].size()) 
-            return 1; // Edge of the grid, contributing to the perimeter
+        
+        if (i < 0 || i >= grid.size() || j < 0 || j >= grid[0].size()) 
+        {
+            res++;
+            return; 
+        }
         if (grid[i][j] == 0) 
-            return 1; // Adjacent water cell, contributing to the perimeter
+        {
+            res++;
+            return;
+        }
         if (grid[i][j] == -1) 
-            return 0; // Already visited cell
+            return;
 
         grid[i][j] = -1; // Mark as visited
-
-        // DFS to calculate the perimeter
-        int res = 0;
-        res += DFS(i - 1, j, grid);
-        res += DFS(i, j - 1, grid);
-        res += DFS(i + 1, j, grid);
-        res += DFS(i, j + 1, grid);
-        return res;
+        DFS(i - 1, j, grid, res);
+        DFS(i, j - 1, grid, res);
+        DFS(i + 1, j, grid, res);
+        DFS(i, j + 1, grid, res);
     }
     int islandPerimeter(vector<vector<int>>& grid) {
         int n=grid.size(),c=grid[0].size();
@@ -50,7 +29,7 @@ public:
         {
             for (int j = 0; j < c; ++j)
             {
-                if (grid[i][j]) res += DFS(i, j, grid);
+                if (grid[i][j]) DFS(i, j, grid, res);
             }
         }
         return res;
