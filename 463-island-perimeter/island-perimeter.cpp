@@ -29,7 +29,10 @@ public:
         {
             for (int j = 0; j < c; ++j)
             {
-                if (grid[i][j]) DFS(i, j, grid, res);
+                if (grid[i][j]){
+                    DFS(i, j, grid, res);
+                    break;
+                }
             }
         }
         return res;
