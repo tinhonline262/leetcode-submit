@@ -31,7 +31,7 @@ public:
             {
                 if (grid[i][j]){
                     DFS(i, j, grid, res);
-                    break;
+                    return res;
                 }
             }
         }
