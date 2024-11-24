@@ -1,23 +1,15 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        multimap<int, int> mp;
-        vector<int> res;
+        unordered_map<int, int> mp;
         for (int i = 0; i < nums.size(); ++i)
         {
-            mp.insert({nums[i], i});
-        }
-        for (auto x: mp)
-        {
-            int val = target - x.first;
-            auto find = mp.find(val);
-            if (find != mp.end() && *find != x)
+            if (mp.find(target - nums[i]) != mp.end())
             {
-                res.push_back(x.second);
-                res.push_back((*find).second);
-                break;
+                return {i, mp[target - nums[i]]};
             }
-        }
-        return res;
+            mp[nums[i]] = i;
+        } 
+        return {};       
     }
 };
