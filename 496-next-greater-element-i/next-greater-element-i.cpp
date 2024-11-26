@@ -4,11 +4,13 @@ public:
         unordered_map<int, int> mp;
         stack<int> st;
         vector<int> res(nums1.size(), -1);
-        for (int i = 0; i < nums1.size(); ++i)
+        int size1 = nums1.size();
+        int size2 = nums2.size();
+        for (int i = 0; i < size1; ++i)
         {
             mp[nums1[i]] = i;
         }
-        for (int i = 0; i < nums2.size(); ++i)
+        for (int i = 0; i < size2; ++i)
         {
             while (!st.empty() && nums2[i] > st.top())
             {
