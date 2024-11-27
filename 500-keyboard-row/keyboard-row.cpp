@@ -7,15 +7,18 @@ public:
 
         for (int i = 0; i < 3; ++i)
         {
-            for (int j = 0; j < keyboards[i].length(); ++j)
+            int keySize = keyboards[i].length();
+            for (int j = 0; j < keySize; ++j)
             {
                 mp[keyboards[i][j]] = i;
             }
         }
-        for (int i = 0; i < words.size(); ++i)
+        int wordsSize = words.size();
+        for (int i = 0; i < wordsSize; ++i)
         {
             int check = mp[(char)tolower(words[i][0])];
-            for (int j = 1; j < words[i].length(); ++j)
+            int wordSize = words[i].length();
+            for (int j = 1; j < wordSize; ++j)
             {
                 if (mp[(char)tolower(words[i][j])] != check)
                 {
