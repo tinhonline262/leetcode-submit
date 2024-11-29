@@ -11,11 +11,13 @@ public:
         int count = 0;
         for (auto it: mp)
         {
+            int i = it.second;
             if (count < 3)
             {
-                result[it.second] = tmp[count++];
+                result[i] = tmp[count];
             }
-            else result[it.second] = to_string(count++ + 1);
+            else result[i] = to_string(count + 1);
+            count++;
         }
         return result;
     }
