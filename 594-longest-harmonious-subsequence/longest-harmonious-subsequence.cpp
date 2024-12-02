@@ -7,11 +7,13 @@ public:
             mp[x]++;
         }
         int result = 0;
-        for (int i = 0; i < nums.size(); ++i)
+        int size = nums.size();
+        for (int i = 0; i < size; ++i)
         {
-            if (mp.find(nums[i] + 1) != mp.end())
+            int tmp = nums[i];
+            if (mp.find(tmp + 1) != mp.end())
             {
-                result = max(mp[nums[i]] + mp[nums[i] + 1], result);
+                result = max(mp[tmp] + mp[tmp + 1], result);
             }
         }
         return result;
