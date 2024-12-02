@@ -4,6 +4,7 @@ public:
         unordered_set<int> se(candyType.begin(), candyType.end());
         int n = candyType.size() / 2;
         int size = se.size();
-        return min(size, n);
+        if (n < size) return n;
+        return size;
     }
 };
