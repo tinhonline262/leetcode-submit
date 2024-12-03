@@ -14,10 +14,11 @@ public:
         {
             if (mp.find(list1[i]) != mp.end() && indexSum >= (i + mp[list1[i]]))
             {
-                if (i + mp[list1[i]] < indexSum && result.size() != 0)
+                int newIndexSum = i + mp[list1[i]];
+                if (newIndexSum < indexSum && result.size() != 0)
                     result.pop_back();
                 result.push_back(list1[i]);
-                indexSum = i + mp[list1[i]];
+                indexSum = newIndexSum;
             }
         }
         return result;
