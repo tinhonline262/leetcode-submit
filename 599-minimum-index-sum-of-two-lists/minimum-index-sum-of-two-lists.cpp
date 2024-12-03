@@ -15,8 +15,8 @@ public:
             auto find = mp.find(list1[i]);
             if (find != mp.end() && indexSum >= (i + find->second))
             {
-                if (i + find->second < indexSum)
-                    result.clear();
+                if (i + find->second < indexSum && result.size() != 0)
+                    result.pop_back();
                 result.push_back(list1[i]);
                 indexSum = i + find->second;
             }
