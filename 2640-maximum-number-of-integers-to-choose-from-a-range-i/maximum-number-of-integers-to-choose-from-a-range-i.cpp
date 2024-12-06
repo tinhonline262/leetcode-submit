@@ -4,7 +4,7 @@ public:
         unordered_set<int> se(banned.begin(), banned.end());
         int res = 0;
         int count = 0;
-        for (int i = 1; i <= n; i++)
+        for (int i = 1; i <= n && res <= maxSum; i++)
         {
             if (se.find(i) == se.end())
             {
