@@ -1,11 +1,13 @@
 class Solution {
     public boolean isPalindrome(int x) {
-        if (x < 0 || (x != 0 && x % 10 == 0)) return false;
-        int y = 0;
-        while (x > y) {
-            y = y * 10 + x % 10;
-            x = x / 10;
+        String stringX = String.valueOf(x);
+        int left = 0;
+        int right = stringX.length() - 1;
+        while (left < right) {
+            if (stringX.charAt(left) != stringX.charAt(right)) return false;
+            left++;
+            right--;
         }
-        return x == y || x == y / 10;
+        return true;
     }
 }
